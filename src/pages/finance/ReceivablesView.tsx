@@ -15,7 +15,7 @@ export function ReceivablesView() {
 
   useEffect(() => {
     fetchReceivables();
-  }, []);
+  }, [dateRange]);
 
   const fetchReceivables = async () => {
     setLoading(true);

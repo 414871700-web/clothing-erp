@@ -377,16 +377,23 @@ export const financeReportApi = {
     };
   },
 
-  async getReceivables() {
-    const { data: salesData } = await supabase
+  async getReceivables(dateRange?: { startDate?: string; endDate?: string }) {
+    let query = supabase
       .from('sales_orders')
       .select(`
         *,
         customer:customers(*)
       `)
-      .neq('unpaid_amount', 0)
-      .order('created_at', { ascending: false });
+      .neq('unpaid_amount', 0);
 
+    if (dateRange?.startDate) {
+      query = query.gte('created_at', dateRange.startDate);
+    }
+    if (dateRange?.endDate) {
+      query = query.lte('created_at', dateRange.endDate);
+    }
+
+    const { data: salesData } = await query.order('created_at', { ascending: false });
     return salesData || [];
   },
 };

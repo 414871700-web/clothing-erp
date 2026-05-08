@@ -7,6 +7,8 @@ interface UserState {
   currentUser: User | null;
   loading: boolean;
   submitting: boolean;
+  page: number;
+  pageSize: number;
 
   fetchUsers: () => Promise<void>;
   fetchUser: (id: string) => Promise<void>;
@@ -14,6 +16,8 @@ interface UserState {
   updateUserRole: (id: string, role: string) => Promise<void>;
   toggleUserStatus: (id: string, isActive: boolean) => Promise<void>;
   deleteUser: (id: string) => Promise<void>;
+  setPage: (page: number) => void;
+  setPageSize: (pageSize: number) => void;
 }
 
 export const useUserStore = create<UserState>((set, get) => ({
@@ -21,6 +25,11 @@ export const useUserStore = create<UserState>((set, get) => ({
   currentUser: null,
   loading: false,
   submitting: false,
+  page: 1,
+  pageSize: 10,
+
+  setPage: (page: number) => set({ page }),
+  setPageSize: (pageSize: number) => set({ pageSize }),
 
   fetchUsers: async () => {
     set({ loading: true });

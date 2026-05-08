@@ -14,26 +14,25 @@ export interface OperationLog {
   created_at: string;
 }
 
-export type OperationType = '新增' | '修改' | '删除' | '审核' | '财务修改' | '库存修改';
-
 export type ModuleType = 
-  | '商品管理'
-  | 'SKU管理'
-  | '仓库管理'
-  | '库存管理'
-  | '生产入库'
-  | '生产成本'
-  | '入库管理'
-  | '库存流水'
-  | '客户管理'
-  | '销售订单'
-  | '收款记录'
-  | '财务流水'
-  | '费用管理'
-  | '财务报表'
-  | '应收账款'
-  | '用户管理'
-  | '角色权限';
+  | "商品"
+  | "销售"
+  | "仓库"
+  | "用户"
+  | "财务"
+  | "系统"
+  | "生产"
+  | "成本"
+  | "费用";
+
+export type OperationType = 
+  | "新增"
+  | "修改"
+  | "删除"
+  | "审核"
+  | "导入"
+  | "导出"
+  | "测试";
 
 export interface CreateLogParams {
   operationType: OperationType;
@@ -45,24 +44,16 @@ export interface CreateLogParams {
   newValue?: Record<string, any>;
 }
 
-export const OPERATION_TYPES: OperationType[] = ['新增', '修改', '删除', '审核', '财务修改', '库存修改'];
+export const OPERATION_TYPES: OperationType[] = ['新增', '修改', '删除', '审核', '导入', '导出', '测试'];
 
 export const MODULE_TYPES: ModuleType[] = [
-  '商品管理',
-  'SKU管理',
-  '仓库管理',
-  '库存管理',
-  '生产入库',
-  '生产成本',
-  '入库管理',
-  '库存流水',
-  '客户管理',
-  '销售订单',
-  '收款记录',
-  '财务流水',
-  '费用管理',
-  '财务报表',
-  '应收账款',
-  '用户管理',
-  '角色权限',
+  '商品',
+  '销售',
+  '仓库',
+  '用户',
+  '财务',
+  '系统',
+  '生产',
+  '成本',
+  '费用',
 ];
