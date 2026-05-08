@@ -12,7 +12,7 @@ interface RoleEditDialogProps {
 const roles = ['老板', '管理员', '仓库', '销售', '财务'];
 
 export function RoleEditDialog({ isOpen, user, onClose, onConfirm }: RoleEditDialogProps) {
-  const [selectedRole, setSelectedRole] = useState(user?.role || '仓库');
+  const [selectedRole, setSelectedRole] = useState<string>(user?.role || '仓库');
 
   if (!isOpen || !user) return null;
 
