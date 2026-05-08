@@ -26,7 +26,7 @@ import { ReceivablesView } from '@/pages/finance/ReceivablesView';
 import { LoginPage } from '@/pages/auth/LoginPage';
 import { UserList } from '@/pages/users/UserList';
 import { RoleManagement } from '@/pages/users/RoleManagement';
-import { OperationLogList } from '@/pages/logs/OperationLogList';
+import OperationLogList from '@/pages/logs/OperationLogList';
 import { ProtectedRoute, AdminRoute } from '@/components/ProtectedRoute';
 
 function App() {
